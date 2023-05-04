@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +24,28 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+
+.ripple-effect{
+  width:2px;
+  height:2px;
+  border-radius: 100%;
+  background-color: rgb(200, 198, 198);
+  opacity: 50%;
+  position:absolute;
+  transform:translate(-50%,-50%);
+  pointer-events: none;
+  animation: ripple 400ms ease-out;
+}
+
+@keyframes ripple {
+  0%{
+    width:2px;
+    height:2px;
+  }
+  100%{
+    width:350%;
+    height:350%;
+  }
 }

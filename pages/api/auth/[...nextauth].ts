@@ -1,12 +1,14 @@
-import { NextAuthOptions } from "next-auth";
-import NextAuth from "next-auth/next";
+import client from "@/app/lib/prismadb";
+import { AuthOptions } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import client from "@/app/lib/prismadb";
 import bcrypt from "bcrypt";
+import NextAuth from "next-auth/next";
 
-export const authOptions: NextAuthOptions = {
+export const authOptions: AuthOptions = {
+  adapter: PrismaAdapter(client),
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
@@ -34,7 +36,9 @@ export const authOptions: NextAuthOptions = {
           credentials.password,
           user.hashedPassword
         );
-        if (!hassedPassword) throw new Error("Invalid email or password");
+        if (!hassedPassword) {
+          throw new Error("Please Check your email or password");
+        }
         return user;
       },
     }),
@@ -44,6 +48,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+
   secret: process.env.NEXTAUTH_SECRET,
 };
 
