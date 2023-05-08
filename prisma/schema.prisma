@@ -19,8 +19,8 @@ model User {
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @default(now())
-  favoriteIds    String[]  @db.ObjectId
 
+  favorites Favorite[]
   accounts  Account[]
   usedItems UsedItem[]
   comments  Comment[]
@@ -57,7 +57,16 @@ model UsedItem {
   images      UsedItemImage[]
   price       Int
   user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  favorites   Favorite[]
   comments    Comment[]
+}
+
+model Favorite {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  usedItemId String   @db.ObjectId
+  usedItem   UsedItem @relation(fields: [usedItemId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Comment {

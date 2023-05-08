@@ -24,7 +24,7 @@ type Props = {
   watch?: [];
   error?: string;
 };
-const category = [
+export const category = [
   { label: "Car", icon: FaCarAlt },
   { label: "Phone", icon: GiSmartphone },
   { label: "House", icon: AiOutlineHome },
@@ -41,7 +41,6 @@ const category = [
 ];
 
 const CategoryContainer = ({ id, setValue, watch = [], error }: Props) => {
-  console.log(watch);
   const [selected, setSelected] = useState<string[]>(watch);
   useEffect(() => {
     setValue("category", selected);

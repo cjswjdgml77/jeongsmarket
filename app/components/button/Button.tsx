@@ -24,7 +24,6 @@ const Button = ({
   bg,
   white,
 }: Props) => {
-  console.log(disabled);
   return (
     <div
       className={`

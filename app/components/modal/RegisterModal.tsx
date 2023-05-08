@@ -94,7 +94,6 @@ const RegisterModal = (props: Props) => {
           label="Continue"
           rounded
           onClick={() => {
-            console.log("submit");
             handleSubmit(onSubmit)();
           }}
           bg="bg-orange-500"

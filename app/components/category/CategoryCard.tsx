@@ -1,6 +1,5 @@
 "use client";
 
-import { Category } from "@/app/type";
 import { useCallback } from "react";
 import { IconType } from "react-icons";
 

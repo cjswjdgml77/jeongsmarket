@@ -44,7 +44,6 @@ const Modal = ({
 
   const closeHandler = useCallback(() => {
     setShowModal(false);
-    console.log(false);
     setTimeout(() => {
       onClose();
       if (reset) reset();

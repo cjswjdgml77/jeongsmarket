@@ -6,7 +6,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="w-full mt-14 h-[70vh] bg-orange-100 flex flex-col sm:flex-row">
+    <div className="w-full mt-14 h-[70vh] bg-orange-100 flex flex-col sm:flex-row rounded-xl">
       <div className="flex flex-1 flex-col justify-center items-center text-center">
         <h1 className="text-3xl">Jeong's market</h1>
         <Heading

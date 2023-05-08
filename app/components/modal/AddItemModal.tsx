@@ -13,6 +13,7 @@ import TextArea from "../Input/TextArea";
 import { toast } from "react-toastify";
 import ImageUploader from "../Input/ImageUploader";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 enum ADD_ITEM_STEPS {
@@ -33,6 +34,7 @@ const schema = yup.object({
 const AddItemModal = (props: Props) => {
   const [steps, setSteps] = useState<ADD_ITEM_STEPS>(ADD_ITEM_STEPS.LOCATION);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const {
     register,
     trigger,
@@ -60,6 +62,7 @@ const AddItemModal = (props: Props) => {
       const response = await axios.post("/api/item", data);
       if (response.status === 200) {
         addItemModal.onClose();
+        router.refresh();
         reset();
         toast.success("Your item is added!", { position: "top-center" });
       }
