@@ -7,8 +7,10 @@ type Props = {
   icon?: IconType;
   outline?: boolean;
   rounded?: boolean;
-  bg?: boolean;
+  bg?: string;
   disabled?: boolean;
+  small?: boolean;
+  white?: boolean;
 };
 
 const Button = ({
@@ -18,11 +20,16 @@ const Button = ({
   rounded,
   onClick,
   disabled,
+  small,
   bg,
+  white,
 }: Props) => {
+  console.log(disabled);
   return (
     <div
       className={`
+      ${small ? "py-4 px-3 font-light" : "w-full"}
+      ${white && "text-white"}
       flex
       justify-center
       items-center
@@ -30,10 +37,13 @@ const Button = ({
       py-3
       group
       active:opacity-80
-      ${disabled ? "pointer-events-none" : "cursor-pointer"}
+      hover:opacity-80
+      transition
+      ${disabled ? "pointer-events-none opacity-80" : "cursor-pointer"}
       ${outline ? "border-[1px] border-black" : ""}
       ${rounded && "rounded-md"}
-      ${bg && "bg-orange-400"}
+      ${bg && bg}
+      
     `}
       onClick={onClick}
     >

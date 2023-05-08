@@ -13,7 +13,7 @@ type Props = {
 const Nav = ({ currentUser }: Props) => {
   const ref = useRef<HTMLTextAreaElement>(null);
   return (
-    <div className="fixed w-full flex p-3">
+    <div className="fixed w-full flex p-3 top-0">
       <Container>
         <div className="flex justify-between">
           <Logo />

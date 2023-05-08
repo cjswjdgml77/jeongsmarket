@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { FieldValues, UseFormReset } from "react-hook-form";
 import { GrFormClose } from "react-icons/gr";
+import Button from "../button/Button";
 type Props = {
   isOpen: boolean;
   onClose: () => void;
@@ -11,35 +12,59 @@ type Props = {
   body?: React.ReactElement;
   footer?: React.ReactElement;
   reset?: UseFormReset<FieldValues>;
+  disabled?: boolean;
+  bottomLeftBtn?: boolean;
+  bottomLeftBtnLabel?: string;
+  bottomLeftAction?: () => void;
+  bottomRightBtn?: boolean;
+  bottomRightBtnLabel?: string;
+  bottomRightAction?: () => void;
 };
 
-const Modal = ({ isOpen, onClose, header, body, footer, reset }: Props) => {
-  const [showModal, setShowMOdal] = useState(isOpen);
+const Modal = ({
+  isOpen,
+  onClose,
+  header,
+  body,
+  footer,
+  reset,
+  bottomLeftBtn,
+  bottomLeftBtnLabel,
+  bottomRightBtn,
+  bottomRightBtnLabel,
+  bottomLeftAction,
+  bottomRightAction,
+  disabled,
+}: Props) => {
+  const [showModal, setShowModal] = useState(isOpen);
 
   useEffect(() => {
-    setShowMOdal(isOpen);
+    setShowModal(isOpen);
   }, [isOpen]);
 
   const closeHandler = useCallback(() => {
-    setShowMOdal(false);
+    setShowModal(false);
+    console.log(false);
     setTimeout(() => {
-      if (reset) reset();
       onClose();
+      if (reset) reset();
     }, 300);
   }, [onClose, reset]);
   if (!isOpen) return null;
   return (
-    <div className="bg-neutral-800/70 fixed w-full h-screen z-20 flex items-center">
+    <div className="bg-neutral-800/70 fixed top-0 w-full h-screen z-20 flex items-center">
       <div
-        className={`w-full translate-y-0 ${
-          !showModal && "transition duration-300 -translate-y-1/2 opacity-0"
-        }`}
+        className={`
+        w-full translate-y-0 transition duration-300
+        ${!showModal && "-translate-y-[50%] opacity-0"}
+        `}
       >
         <motion.div
           initial={{ y: 600 }}
           animate={{ y: [600, 150, 0], opacity: [1, 0, 0, 0, 1] }}
           className={`
           relative
+          inset-0
           w-full
           sm:w-1/2
           lg:w-[30%]
@@ -61,6 +86,26 @@ const Modal = ({ isOpen, onClose, header, body, footer, reset }: Props) => {
           <hr />
           <div className="flex-auto">{body}</div>
           <div className="flex-auto">{footer}</div>
+          <div className="flex mt-6 gap-3">
+            {bottomLeftBtn && bottomLeftBtnLabel && bottomLeftAction && (
+              <Button
+                label={bottomLeftBtnLabel}
+                disabled={disabled}
+                rounded
+                outline
+                onClick={bottomLeftAction}
+              />
+            )}
+            {bottomRightBtn && bottomRightBtnLabel && bottomRightAction && (
+              <Button
+                label={bottomRightBtnLabel}
+                disabled={disabled}
+                rounded
+                bg="bg-orange-500"
+                onClick={bottomRightAction}
+              />
+            )}
+          </div>
         </motion.div>
       </div>
     </div>

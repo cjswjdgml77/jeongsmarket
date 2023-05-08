@@ -45,7 +45,6 @@ const LoginModal = (props: Props) => {
         email: data.email,
         password: data.password,
       });
-      console.log(response);
       if (response?.ok) {
         toast.success("Login successful", { position: "top-center" });
         loginModal.onClose();
@@ -82,7 +81,7 @@ const LoginModal = (props: Props) => {
           rounded
           disabled={isLoading}
           onClick={() => handleSubmit(onSubmit)()}
-          bg
+          bg="bg-orange-500"
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import RecoilContainer from "./components/RecoilContainer";
 import LoginModal from "./components/modal/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RegisterModal from "./components/modal/RegisterModal";
+import AddItemModal from "./components/modal/AddItemModal";
 const font = Arvo({
   weight: "400",
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <RecoilContainer>
+          <AddItemModal />
           <LoginModal />
           <RegisterModal />
           <Nav currentUser={currentUser} />

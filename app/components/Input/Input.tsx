@@ -8,6 +8,7 @@ type Props = {
   register: UseFormRegister<FieldValues>;
   errors?: FieldErrors<FieldValues>;
   disabled?: boolean;
+  price?: boolean;
 };
 
 const Input = ({
@@ -17,10 +18,12 @@ const Input = ({
   register,
   errors,
   disabled,
+  price,
 }: Props) => {
   return (
     <div className="relative">
-      <div className="flex relative border-[1px] rounded-lg px-3">
+      <div className="flex relative border-[1px] rounded-lg px-3 items-center">
+        <div className="mr-2">$</div>
         <input
           id={id}
           type={type}
@@ -47,6 +50,7 @@ const Input = ({
             peer-focus:-translate-y-5
             peer-focus:scale-90
             text-neutral-500
+            ${price && "translate-x-3"}
             ${errors && errors[id] && "-translate-y-5"}
         `}
           htmlFor={id}

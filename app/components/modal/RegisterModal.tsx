@@ -47,7 +47,6 @@ const RegisterModal = (props: Props) => {
       reset();
       registerModal.onClose();
     } catch (error: any) {
-      console.log(error);
       if (error?.response?.statusText) {
         toast.error(error.response.statusText, {
           position: "top-right",
@@ -98,7 +97,7 @@ const RegisterModal = (props: Props) => {
             console.log("submit");
             handleSubmit(onSubmit)();
           }}
-          bg
+          bg="bg-orange-500"
           disabled={isLoading}
         />
       </div>

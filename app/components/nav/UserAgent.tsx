@@ -8,6 +8,7 @@ import MenuItem from "./MenuItem";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useAddItemModal from "@/app/hooks/useAddItemModal";
 type Props = {
   currentUser?: User | null;
 };
@@ -16,6 +17,7 @@ const UserAgent = ({ currentUser }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const addItemModal = useAddItemModal();
   return (
     <div className="flex items-center gap-3 relative">
       <div
@@ -49,6 +51,7 @@ const UserAgent = ({ currentUser }: Props) => {
         >
           {currentUser ? (
             <>
+              <MenuItem label="Add my item" onClick={addItemModal.onOpen} />
               <MenuItem label="Logout" onClick={signOut} />
             </>
           ) : (

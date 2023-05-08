@@ -46,17 +46,18 @@ model Account {
 }
 
 model UsedItem {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId      String    @db.ObjectId
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String          @db.ObjectId
   imageSrc    String[]
   title       String
   description String
   address     String
-  createdAt   DateTime  @default(now())
-  category    String
+  createdAt   DateTime        @default(now())
+  category    String[]
+  images      UsedItemImage[]
   price       Int
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  contents    Comment[]
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments    Comment[]
 }
 
 model Comment {
@@ -67,4 +68,14 @@ model Comment {
 
   usedItem UsedItem @relation(fields: [userId], references: [id], onDelete: Cascade)
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UsedItemImage {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  usedItemId String @db.ObjectId
+  filename   String
+  public_id  String
+  secure_url String
+
+  UsedItem UsedItem @relation(fields: [usedItemId], references: [id], onDelete: Cascade)
 }
