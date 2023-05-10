@@ -7,6 +7,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 type Props = {
   usedItemId: string;
   currentUser?: (User & { favorites: Favorite[] }) | null;
+  disabeld?: boolean;
 };
 
 const HeartButton = ({ usedItemId, currentUser }: Props) => {
@@ -17,7 +18,10 @@ const HeartButton = ({ usedItemId, currentUser }: Props) => {
   return (
     <div
       className={`${isLoading ? "pointer-events-none" : "cursor-pointer"} `}
-      onClick={toggleFavorite}
+      onClick={(e) => {
+        e.stopPropagation();
+        toggleFavorite();
+      }}
     >
       <AiOutlineHeart className="absolute" />
       <AiFillHeart

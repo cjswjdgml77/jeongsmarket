@@ -3,7 +3,7 @@ import { getUsedItem } from "@/app/actions/getUsedItems";
 import AnimatePage from "@/app/components/AnimatePage";
 import Container from "@/app/components/Container";
 import Heading from "@/app/components/Heading";
-import HeartCount from "@/app/components/usedItem/HeartCount";
+import HeartCount from "@/app/components/button/HeartCount";
 import ImagesSlider from "@/app/components/usedItem/ImagesSlider";
 import TextArea from "@/app/components/usedItem/TextArea";
 import User from "@/app/components/usedItem/User";

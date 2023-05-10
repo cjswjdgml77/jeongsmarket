@@ -11,15 +11,13 @@ import React from "react";
 import { BiMap } from "react-icons/bi";
 import { BsChat } from "react-icons/bs";
 import { useRouter } from "next/navigation";
-import HeartCount from "./HeartCount";
+import HeartCount from "../button/HeartCount";
 import { motion } from "framer-motion";
+import { CurrentUserFavorites, UsedItemWithImgComFav } from "@/app/type";
+import CommentCount from "../button/CommentCount";
 type Props = {
-  data: UsedItem & {
-    images: UsedItemImage[];
-    comments: Comment[];
-    favorites: Favorite[];
-  };
-  currentUser?: (User & { favorites: Favorite[] }) | null;
+  data: UsedItemWithImgComFav;
+  currentUser?: CurrentUserFavorites;
 };
 
 const UsedItemCard = ({ data, currentUser }: Props) => {
@@ -36,14 +34,14 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
         gap-1
     "
     >
-      <motion.div
+      <div
         className="
-                    aspect-square
-                    h-[25vh]
-                    rounded-lg
-                    relative
-                    overflow-hidden
-                "
+                  aspect-square
+                  h-[25vh]
+                  rounded-lg
+                  relative
+                  overflow-hidden
+              "
       >
         <Image
           className="group-hover:scale-110 transitio cursor-pointer w-full h-full"
@@ -55,7 +53,7 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
             router.push(`/useditem/${data.id}`);
           }}
         />
-      </motion.div>
+      </div>
 
       <div className="font-semibold text-lg">{data.title}</div>
       <div className="text-right justify-end text-neutral-400 text-sm w-full flex flex-wrap">
@@ -79,10 +77,7 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
         />
 
         <div className="flex items-center gap-1">
-          <BsChat />
-          <div className="font-thin text-neutral-500">
-            {data.comments.length}
-          </div>
+          <CommentCount usedItemId={data.id} comments={data.comments} />
         </div>
       </div>
     </div>

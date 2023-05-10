@@ -30,7 +30,7 @@ const MenuItem = ({ label, onClick }: Props) => {
   return (
     <div
       className="
-        w-[150px]
+        w-full
         text-center
         cursor-pointer
         hover:bg-neutral-100

@@ -1,12 +1,13 @@
 "use client";
 
 import { Favorite, User } from "@prisma/client";
-import HeartButton from "../button/HeartButton";
+import HeartButton from "./HeartButton";
+import { CurrentUserFavorites } from "@/app/type";
 
 type Props = {
   count: Favorite[];
   usedItemId: string;
-  currentUser?: (User & { favorites: Favorite[] }) | null;
+  currentUser?: CurrentUserFavorites;
   big?: boolean;
 };
 
