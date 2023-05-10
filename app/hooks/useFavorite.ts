@@ -1,6 +1,5 @@
 import { Favorite, User } from "@prisma/client";
 import axios from "axios";
-import { getSession } from "next-auth/react";
 import useLoginModal from "./useLoginModal";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -25,9 +24,9 @@ export default function useFavorite(
     setIsLoading(true);
     try {
       if (!favorite) {
-        await axios.post(`/api/favorite/${usedItemPostId}`);
+        await axios.post(`${location.origin}/api/favorite/${usedItemPostId}`);
       } else {
-        await axios.delete(`api/favorite/${favorite.id}`);
+        await axios.delete(`${location.origin}/api/favorite/${favorite.id}`);
       }
       router.refresh();
     } catch (error: any) {
@@ -36,6 +35,7 @@ export default function useFavorite(
           position: "top-right",
         });
       } else {
+        console.log(error);
         toast.error("Internal server error", { position: "top-right" });
       }
     } finally {

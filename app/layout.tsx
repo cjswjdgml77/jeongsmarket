@@ -6,6 +6,9 @@ import LoginModal from "./components/modal/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import RegisterModal from "./components/modal/RegisterModal";
 import AddItemModal from "./components/modal/AddItemModal";
+import PageWapper from "./components/PageWapper";
+import MyLoading from "./MyLoading";
+
 const font = Arvo({
   weight: "400",
   subsets: ["latin"],
@@ -26,11 +29,16 @@ export default async function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <RecoilContainer>
-          <AddItemModal />
-          <LoginModal />
-          <RegisterModal />
-          <Nav currentUser={currentUser} />
-          {children}
+          <MyLoading>
+            <AddItemModal />
+            <LoginModal />
+            <RegisterModal />
+            <Nav currentUser={currentUser} />
+            <div className="overflow-x-hidden">
+              <PageWapper>{children}</PageWapper>
+              {/* {children} */}
+            </div>
+          </MyLoading>
         </RecoilContainer>
       </body>
     </html>

@@ -54,8 +54,8 @@ const Modal = ({
     <div className="bg-neutral-800/70 fixed top-0 w-full h-screen z-20 flex items-center">
       <div
         className={`
-        w-full translate-y-0 transition duration-300
-        ${!showModal && "-translate-y-[50%] opacity-0"}
+        w-full transition duration-300
+        ${showModal ? "translate-y-0" : "-translate-y-[50%] opacity-0"}
         `}
       >
         <motion.div

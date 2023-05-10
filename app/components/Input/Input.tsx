@@ -23,7 +23,7 @@ const Input = ({
   return (
     <div className="relative">
       <div className="flex relative border-[1px] rounded-lg px-3 items-center">
-        <div className="mr-2">$</div>
+        {price && <div className="mr-2">$</div>}
         <input
           id={id}
           type={type}

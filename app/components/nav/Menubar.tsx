@@ -4,7 +4,7 @@ type Props = {};
 
 const Menubar = (props: Props) => {
   return (
-    <div className="block">
+    <div className="hidden">
       <AiOutlineMenu size={26} />
     </div>
   );

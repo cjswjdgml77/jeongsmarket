@@ -38,7 +38,9 @@ body {
   pointer-events: none;
   animation: ripple 400ms ease-out;
 }
-
+textarea{
+  background:#fff; /*Any color You wanted*/
+}
 @keyframes ripple {
   0%{
     width:2px;
@@ -47,5 +49,52 @@ body {
   100%{
     width:350%;
     height:350%;
+  }
+}
+
+.image-slider__next{
+ animation: slider-next 0.3s ease-in-out;
+}
+@keyframes slider-next {
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+.image-slider__next-sibling{
+  animation:slider-next-sibling 0.3s ease-in-out
+}
+@keyframes slider-next-sibling {
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+.image_slider__prev{
+  animation:slider-prev 0.3s ease-in-out;
+}
+@keyframes slider-prev {
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+.image_slider__prev-sibling{
+  animation:slider-prev-sibling 0.3s ease-in-out
+}
+
+@keyframes slider-prev-sibling {
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(100%);
   }
 }

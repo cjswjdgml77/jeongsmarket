@@ -9,7 +9,6 @@ export async function POST(req: Request) {
     if (!email || !password) {
       return NextResponse.error();
     }
-    console.log(email, password);
     const user = await client.user.findUnique({
       where: { email },
     });
