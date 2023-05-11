@@ -20,7 +20,10 @@ const Images = ({
       variants={variants}
       className={`absolute
         ${idx === 0 && "top-[10vh] left-[10vw]"}
-        ${idx === 1 && "top-[13vh] right-[8vw] "}`}
+        ${idx === 1 && "top-[13vh] right-[8vw] "}
+        ${idx === 2 && "bottom-[10vh] left-[8vw]"}
+        ${idx === 3 && "bottom-[11vh] right-[9vw]"}
+        `}
     >
       <div className="relative w-[20vw] h-[20vh]">
         <Image
@@ -38,6 +41,8 @@ const LoadingPage = ({ setIsLoading }: Props) => {
   const imgUrls = [
     "https://res.cloudinary.com/dieondzh2/image/upload/v1683009619/samples/ecommerce/car-interior-design.jpg",
     "https://res.cloudinary.com/dieondzh2/image/upload/v1683009620/samples/ecommerce/accessories-bag.jpg",
+    "https://res.cloudinary.com/dieondzh2/image/upload/v1683009634/cld-sample-5.jpg",
+    "https://res.cloudinary.com/dieondzh2/image/upload/v1683009620/samples/ecommerce/leather-bag-gray.jpg",
   ];
   const container = {
     show: {
