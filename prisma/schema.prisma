@@ -70,13 +70,13 @@ model Favorite {
 }
 
 model Comment {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   content    String
-  userId     String @db.ObjectId
-  usedItemId String @db.ObjectId
-
-  usedItem UsedItem @relation(fields: [userId], references: [id], onDelete: Cascade)
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String   @db.ObjectId
+  usedItemId String   @db.ObjectId
+  createdAt  DateTime @default(now())
+  usedItem   UsedItem @relation(fields: [usedItemId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model UsedItemImage {

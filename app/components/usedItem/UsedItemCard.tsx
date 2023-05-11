@@ -76,9 +76,7 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
           currentUser={currentUser}
         />
 
-        <div className="flex items-center gap-1">
-          <CommentCount usedItemId={data.id} comments={data.comments} />
-        </div>
+        <CommentCount usedItemId={data.id} comments={data.comments} />
       </div>
     </div>
   );

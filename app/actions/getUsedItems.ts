@@ -29,7 +29,16 @@ export const getUsedItem = async (id: string) => {
   try {
     const detail = await client.usedItem.findUnique({
       where: { id: id },
-      include: { images: true, user: true, favorites: true },
+      include: {
+        images: true,
+        user: true,
+        favorites: true,
+        comments: {
+          include: {
+            user: true,
+          },
+        },
+      },
     });
     return detail;
   } catch (e) {

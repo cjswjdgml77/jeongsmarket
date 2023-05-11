@@ -30,6 +30,7 @@ const MenuItem = ({ label, onClick }: Props) => {
   return (
     <div
       className="
+        min-w-[10rem]
         w-full
         text-center
         cursor-pointer

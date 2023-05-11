@@ -8,7 +8,6 @@ type Props = {
 };
 
 const CommentCount = ({ usedItemId, comments, big }: Props) => {
-  console.log(comments);
   return (
     <div className={`flex items-center gap-1 ${big && "gap-2 text-xl"}`}>
       <BsChat />

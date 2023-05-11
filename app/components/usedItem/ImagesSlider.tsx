@@ -44,7 +44,7 @@ const ImagesSlider = ({ images }: Props) => {
                 alt={image.filename}
                 src={image.secure_url}
                 className={`
-                      ${isInitial && idx === 0 && "z-30"}
+                      ${isInitial && idx === 0 && "z-[2]"}
                       ${!isInitial && current === idx && aniForCurrent}
                       ${!isInitial && sibling === idx && aniForSibling}
                     `}
@@ -54,7 +54,7 @@ const ImagesSlider = ({ images }: Props) => {
           </div>
         </div>
         <div
-          className={`absolute top-0 flex items-center  h-full -left-4 z-30 ${
+          className={`absolute top-0 flex items-center  h-full -left-4 z-[2] ${
             images.length === 1 && "hidden"
           }`}
         >
@@ -63,7 +63,7 @@ const ImagesSlider = ({ images }: Props) => {
           </button>
         </div>
         <div
-          className={`absolute top-0 flex items-center  h-full -right-4 z-30 ${
+          className={`absolute top-0 flex items-center  h-full -right-4 z-[2] ${
             images.length === 1 && "hidden"
           }`}
         >

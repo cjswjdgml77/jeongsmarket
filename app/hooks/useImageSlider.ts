@@ -44,16 +44,16 @@ export default function useImageSlider({ images }: Props) {
       } else {
         imgSibling = selected.imgIdx - 1;
       }
-      aniForCurrent = "image-slider__next z-20";
-      aniForSibling = "image-slider__next-sibling z-10";
+      aniForCurrent = "image-slider__next z-[2]";
+      aniForSibling = "image-slider__next-sibling z-[1]";
     } else {
       if (selected.imgIdx === images.length - 1) {
         imgSibling = 0;
       } else {
         imgSibling = selected.imgIdx + 1;
       }
-      aniForCurrent = "image_slider__prev z-20";
-      aniForSibling = "image_slider__prev-sibling z-10";
+      aniForCurrent = "image_slider__prev z-[2]";
+      aniForSibling = "image_slider__prev-sibling z-[1]";
     }
     return {
       current: selected.imgIdx,
