@@ -42,7 +42,7 @@ const Header = (props: Props) => {
       }}
     >
       <div className="flex flex-1 justify-center opacity-75 w-full">
-        <Image src={bg} alt="bg" fill />
+        <Image src={bg} alt="bg" fill priority />
       </div>
       <div className="flex w-full gap-4 flex-col justify-center items-center text-center text-neutral-100 ">
         <div className="overflow-hidden">

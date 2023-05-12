@@ -90,7 +90,7 @@ const LoadingPage = ({ setIsLoading }: Props) => {
   };
   return (
     <motion.div
-      className="flex w-full h-screen items-center justify-center overflow-hidden"
+      className="flex w-full h-screen items-center justify-center overflow-hidden relative"
       variants={container}
       initial="initial"
       animate="show"
