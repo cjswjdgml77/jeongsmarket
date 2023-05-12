@@ -16,7 +16,7 @@ const CategoryCard = ({ label, icon: Icon, onSelect, selected }: Props) => {
     if (isHave) {
       onSelect(selected.filter((item) => item !== label));
     } else {
-      if (selected.length > 5) {
+      if (selected.length > 3) {
         return;
       }
       onSelect([...selected, label]);

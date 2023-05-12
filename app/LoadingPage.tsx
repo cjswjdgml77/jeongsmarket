@@ -5,7 +5,6 @@ type Props = {
 import Image from "next/image";
 import bg from "../public/stuffbg.jpg";
 import { motion } from "framer-motion";
-
 const Images = ({
   url,
   idx,
@@ -25,7 +24,7 @@ const Images = ({
         ${idx === 3 && "bottom-[11vh] right-[9vw]"}
         `}
     >
-      <div className="relative w-[20vw] h-[20vh]">
+      <div className="relative w-[15vh] h-[20vw]  sm:w-[20vw] sm:h-[20vh]">
         <Image
           src={url}
           alt="sub-background"
@@ -100,7 +99,7 @@ const LoadingPage = ({ setIsLoading }: Props) => {
       }}
     >
       <motion.div
-        className="relative w-1/3"
+        className="relative w-3/4 sm:w-1/3"
         variants={mainVariants}
         layoutId="main-bg"
       >

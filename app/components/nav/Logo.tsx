@@ -13,11 +13,11 @@ const Logo = (props: Props) => {
       <motion.div>
         <TiShoppingCart
           size={26}
-          className="group-hover:animate-[movingCart_0.5s_cubic-bezier(0.68,-0.55,0.3,1.55)]"
+          className="group-hover:animate-[movingCart_0.5s_0.3s_cubic-bezier(0.68,-0.55,0.3,1.55)]"
         />
       </motion.div>
       <div className="overflow-hidden">
-        <div className="group-hover:animate-[movingLetter_0.8s_cubic-bezier(0.68,-0.55,0.3,1.55)]">
+        <div className="group-hover:animate-[movingLetter_0.8s_0.3s_cubic-bezier(0.68,-0.55,0.3,1.55)]">
           Jeong's market
         </div>
       </div>

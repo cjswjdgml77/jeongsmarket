@@ -30,7 +30,13 @@ const UserAgent = ({ currentUser }: Props) => {
       >
         {currentUser?.image ? (
           <div className="w-8 h-8 rounded-full relative overflow-hidden">
-            <Image src={currentUser.image} fill alt="UserImage" />
+            <Image
+              src={currentUser.image}
+              width={100}
+              height={100}
+              className="w-full h-full"
+              alt="UserImage"
+            />
           </div>
         ) : (
           <FaRegUser size={20} />

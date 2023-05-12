@@ -23,11 +23,16 @@ const AddressInput = ({ id, setValue, register, error, watch }: Props) => {
     <>
       <Autocomplete
         apiKey={"AIzaSyCYnYUfruPL5wSy6SyRGcWTBbXrW529_hM"}
+        language="en-US"
         className="py-2 px-3 border-[1px] rounded-lg"
         style={{ width: "100%", outline: "none" }}
         onPlaceSelected={(place) => {
-          // setAddress(place.formatted_address);
-          setValue("address", place.formatted_address);
+          const idx = place.formatted_address.indexOf(", Australia");
+          let address = place.formatted_address as string;
+          if (idx !== -1) {
+            address = address.slice(0, idx);
+          }
+          setValue("address", address);
         }}
         defaultValue={watch}
         options={{

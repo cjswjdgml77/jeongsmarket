@@ -55,7 +55,9 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
         />
       </div>
 
-      <div className="font-semibold text-lg">{data.title}</div>
+      <div className="text-lg overflow-hidden whitespace-nowrap text-ellipsis">
+        {data.title}
+      </div>
       <div className="text-right justify-end text-neutral-400 text-sm w-full flex flex-wrap">
         {data.category.map((category, idx) => (
           <span key={category}>
@@ -65,10 +67,10 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
         ))}
       </div>
       <span className="px-2 rounded-md text-right">${data.price}</span>
-      <div>
-        <BiMap />
-        {data.address}
-      </div>
+
+      <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+        <BiMap className="inline-block" /> {data.address}
+      </p>
       <div className="flex items-center gap-3">
         <HeartCount
           count={data.favorites}

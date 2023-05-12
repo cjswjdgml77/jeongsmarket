@@ -2,13 +2,16 @@
 import { useEffect, useState } from "react";
 import LoadingPage from "./LoadingPage";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const MyLoading = ({ children }: Props) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const pathname = usePathname();
+  console.log("pathname", pathname);
+  const [isLoading, setIsLoading] = useState(pathname !== "/");
   return (
     <AnimatePresence mode="wait">
       {isLoading ? (
