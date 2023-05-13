@@ -74,7 +74,6 @@ const UserAgent = ({ currentUser }: Props) => {
                   router.push("/myitem");
                 }}
               />
-              <MenuItem label="My Favorites" />
               <hr className="w-3/4 m-auto" />
               <div></div>
               <MenuItem label="Logout" onClick={signOut} />

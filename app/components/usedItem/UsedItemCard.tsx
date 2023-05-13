@@ -36,19 +36,17 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
     >
       <div
         className="
-                  aspect-square
-                  h-[25vh]
                   rounded-lg
                   relative
                   overflow-hidden
               "
       >
         <Image
-          className="group-hover:scale-110 transitio cursor-pointer w-full h-full"
+          className="group-hover:scale-110 transitio cursor-pointer w-full h-full aspect-square"
           alt={data.title}
           src={data.images[0].secure_url}
-          width={300}
-          height={300}
+          width={400}
+          height={400}
           onClick={() => {
             router.push(`/useditem/${data.id}`);
           }}

@@ -51,11 +51,6 @@ const page = async ({ params }: Props) => {
             usedItemId={usedItemDetail.id}
             big
           />
-          <CommentCount
-            comments={usedItemDetail.comments}
-            usedItemId={usedItemDetail.id}
-            big
-          />
         </div>
         <CommentContainer
           usedItemId={usedItemDetail.id}
