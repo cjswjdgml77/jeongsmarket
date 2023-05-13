@@ -24,7 +24,6 @@ const Header = (props: Props) => {
       className={`
         mt-14
         m-auto
-        bg-orange-100
         flex
         items-center
         justify-center

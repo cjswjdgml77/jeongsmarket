@@ -10,20 +10,18 @@ type Props = {
 
 const MyLoading = ({ children }: Props) => {
   const pathname = usePathname();
-  console.log("pathname", pathname);
   const [isLoading, setIsLoading] = useState(pathname !== "/");
-  console.log(isLoading);
   return (
     <AnimatePresence mode="wait">
       {children}
       {/* dd */}
-      {/* {isLoading ? (
+      {isLoading ? (
         <>{children}</>
       ) : (
         <motion.div key="loader">
           <LoadingPage setIsLoading={setIsLoading} />
         </motion.div>
-      )} */}
+      )}
     </AnimatePresence>
   );
 };
