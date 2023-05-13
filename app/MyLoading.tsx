@@ -13,8 +13,6 @@ const MyLoading = ({ children }: Props) => {
   const [isLoading, setIsLoading] = useState(pathname !== "/");
   return (
     <AnimatePresence mode="wait">
-      {children}
-      {/* dd */}
       {isLoading ? (
         <>{children}</>
       ) : (
