@@ -15,13 +15,14 @@ const MyLoading = ({ children }: Props) => {
   console.log(isLoading);
   return (
     <AnimatePresence mode="wait">
-      {isLoading ? (
+      {children}
+      {/* {isLoading ? (
         <>{children}</>
       ) : (
         <motion.div key="loader">
           <LoadingPage setIsLoading={setIsLoading} />
         </motion.div>
-      )}
+      )} */}
     </AnimatePresence>
   );
 };
