@@ -17,7 +17,6 @@ const Header = (props: Props) => {
       layout
       transition={{
         type: "spring",
-        ease: "linear",
         duration: 1,
       }}
       layoutId="main-bg"

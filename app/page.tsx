@@ -1,4 +1,3 @@
-import MyLoading from "./MyLoading";
 import getCurrentUser from "./actions/getCurrentUser";
 import getUsedItems from "./actions/getUsedItems";
 import Container from "./components/Container";
@@ -12,6 +11,7 @@ type Props = {
     [key: string]: string;
   };
 };
+
 export default async function Home({ searchParams }: Props) {
   const currentUser = await getCurrentUser();
   const usedItems = await getUsedItems(searchParams["category"]);

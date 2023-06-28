@@ -27,7 +27,7 @@ const Categories = ({}: Props) => {
   }, [selected]);
 
   return (
-    <div className="flex py-5 flex-col gap-5 w-full h-auto items-center">
+    <div className="flex py-5 flex-col gap-5 w-full h-auto items-center sticky top-0 bg-white z-10">
       <div className="w-full text-center text-xl">Category</div>
       <div className="flex w-full xl:justify-center gap-10 overflow-x-auto overflow-y-hidden pb-4">
         {categories &&

@@ -17,7 +17,9 @@ const HeartButton = ({ usedItemId, currentUser }: Props) => {
   );
   return (
     <div
-      className={`${isLoading ? "pointer-events-none" : "cursor-pointer"} `}
+      className={`${
+        isLoading ? "pointer-events-none" : "cursor-pointer"
+      } relative`}
       onClick={(e) => {
         e.stopPropagation();
         toggleFavorite();

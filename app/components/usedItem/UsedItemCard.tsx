@@ -1,20 +1,13 @@
 "use client";
-import {
-  Comment,
-  Favorite,
-  UsedItem,
-  UsedItemImage,
-  User,
-} from "@prisma/client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { BiMap } from "react-icons/bi";
-import { BsChat } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 import HeartCount from "../button/HeartCount";
-import { motion } from "framer-motion";
 import { CurrentUserFavorites, UsedItemWithImgComFav } from "@/app/type";
 import CommentCount from "../button/CommentCount";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 type Props = {
   data: UsedItemWithImgComFav;
   currentUser?: CurrentUserFavorites;
@@ -22,7 +15,7 @@ type Props = {
 
 const UsedItemCard = ({ data, currentUser }: Props) => {
   const router = useRouter();
-
+  const [isDone, setIsDone] = useState(false);
   return (
     <div
       className="
@@ -41,6 +34,12 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
                   overflow-hidden
               "
       >
+        {!isDone && (
+          <Skeleton
+            className="top-0 left-0 z-10 w-full h-full aspect-square"
+            style={{ position: "absolute" }}
+          />
+        )}
         <Image
           className="group-hover:scale-110 transitio cursor-pointer w-full h-full aspect-square"
           alt={data.title}
@@ -50,33 +49,53 @@ const UsedItemCard = ({ data, currentUser }: Props) => {
           onClick={() => {
             router.push(`/useditem/${data.id}`);
           }}
+          onLoad={() => setIsDone(true)}
         />
       </div>
 
       <div className="text-lg overflow-hidden whitespace-nowrap text-ellipsis">
-        {data.title}
+        {data.title || <Skeleton />}
       </div>
       <div className="text-right justify-end text-neutral-400 text-sm w-full flex flex-wrap">
-        {data.category.map((category, idx) => (
-          <span key={category}>
-            {category}
-            {data.category.length > idx + 1 && ","}
-          </span>
-        ))}
+        {data.category ? (
+          data.category.map((category, idx) => (
+            <span key={category}>
+              {category}
+              {data.category.length > idx + 1 && ","}
+            </span>
+          ))
+        ) : (
+          <Skeleton width={"9rem"} />
+        )}
       </div>
-      <span className="px-2 rounded-md text-right">${data.price}</span>
+      <span className="px-2 rounded-md text-right">
+        {`$${data.price}` || <Skeleton width={"6rem"} />}
+      </span>
 
       <p className="overflow-hidden text-ellipsis whitespace-nowrap">
-        <BiMap className="inline-block" /> {data.address}
+        {data.address ? (
+          <>
+            <BiMap className="inline-block" /> {data.address}
+          </>
+        ) : (
+          <Skeleton />
+        )}
       </p>
       <div className="flex items-center gap-3">
-        <HeartCount
-          count={data.favorites}
-          usedItemId={data.id}
-          currentUser={currentUser}
-        />
-
-        <CommentCount usedItemId={data.id} comments={data.comments} />
+        {data.favorites ? (
+          <HeartCount
+            count={data.favorites}
+            usedItemId={data.id}
+            currentUser={currentUser}
+          />
+        ) : (
+          <Skeleton width={"2rem"} />
+        )}
+        {data.comments ? (
+          <CommentCount usedItemId={data.id} comments={data.comments} />
+        ) : (
+          <Skeleton width={"2rem"} />
+        )}
       </div>
     </div>
   );

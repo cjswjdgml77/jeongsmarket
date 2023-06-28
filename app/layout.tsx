@@ -27,14 +27,14 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={`${font.className} overflow-hidden`}>
         <RecoilContainer>
           <MyLoading>
             <AddItemModal />
             <LoginModal />
             <RegisterModal />
             <Nav currentUser={currentUser} />
-            <div className="overflow-x-hidden">
+            <div className="overflow-x-hidden max-h-screen">
               <PageWapper>{children}</PageWapper>
               {/* {children} */}
             </div>
